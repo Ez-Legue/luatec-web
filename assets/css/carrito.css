@@ -1,0 +1,133 @@
+/* =========================================================
+   LUATEC · Carrito y pedidos
+   ========================================================= */
+
+/* Botón del carrito en el encabezado */
+.carrito-btn {
+  position: relative; display: inline-grid; place-items: center;
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1.5px solid var(--line); background: #fff; color: var(--navy);
+  cursor: pointer; transition: border-color .2s, transform .2s;
+}
+.carrito-btn:hover { border-color: var(--navy); transform: translateY(-1px); }
+.carrito-btn__cant {
+  position: absolute; top: -4px; right: -4px;
+  min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px;
+  background: var(--glow); color: var(--navy);
+  font: 800 11px/20px 'Manrope', sans-serif; text-align: center;
+}
+.site-header__acciones { display: flex; align-items: center; gap: 12px; }
+
+/* Botones de la tarjeta de producto */
+.prod3d__acciones { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.prod3d__acciones .prod3d__cta { border: 0; cursor: pointer; }
+.prod3d__cta--sec {
+  background: transparent !important; color: var(--navy) !important;
+  border: 1.5px solid var(--line) !important; padding-inline: 14px;
+}
+.prod3d__cta--sec:hover { border-color: var(--navy) !important; }
+
+/* Panel lateral */
+.carrito { position: fixed; inset: 0; z-index: 90; pointer-events: none; }
+.carrito.is-open { pointer-events: auto; }
+.carrito__fondo {
+  position: absolute; inset: 0; background: rgba(2,13,92,.45);
+  opacity: 0; transition: opacity .25s;
+}
+.carrito.is-open .carrito__fondo { opacity: 1; }
+.carrito__caja {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: min(440px, 100%); background: #fff;
+  display: flex; flex-direction: column;
+  transform: translateX(100%); transition: transform .3s ease;
+  box-shadow: -20px 0 60px -20px rgba(2,13,92,.4);
+}
+.carrito.is-open .carrito__caja { transform: none; }
+.carrito-abierto, .carrito-abierto body { overflow: hidden; }
+.carrito-abierto .music-player { display: none; }
+
+.carrito__head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 20px; border-bottom: 1px solid var(--line);
+}
+.carrito__head h2 { margin: 0; font-size: 1.3rem; }
+.carrito__x {
+  width: 40px; height: 40px; border-radius: 50%; border: 0;
+  background: var(--ice); color: var(--navy); font-size: 26px; line-height: 1; cursor: pointer;
+}
+.carrito__cuerpo { flex: 1; overflow-y: auto; padding: 20px; display: grid; gap: 16px; align-content: start; }
+.carrito__vacio { color: var(--muted); text-align: center; margin: 24px 0 8px; }
+
+.carrito__lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.carrito__item {
+  display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: start;
+  padding-bottom: 14px; border-bottom: 1px solid var(--line);
+}
+.carrito__item img { width: 64px; height: 64px; object-fit: cover; border-radius: 12px; background: var(--ice); }
+.carrito__info { display: grid; gap: 4px; font-size: 15px; }
+.carrito__info strong { color: var(--navy); line-height: 1.25; }
+.carrito__info span { color: var(--muted); font-size: 14px; }
+.carrito__cant { display: inline-flex; align-items: center; gap: 4px; margin-top: 4px; }
+.carrito__cant button {
+  width: 30px; height: 30px; border-radius: 8px; border: 1.5px solid var(--line);
+  background: #fff; color: var(--navy); font-weight: 700; cursor: pointer;
+}
+.carrito__cant output { min-width: 26px; text-align: center; font-weight: 700; }
+.carrito__quitar, .carrito__volver, .carrito__alias button { font-family: inherit; }
+.carrito__quitar { border: 0; background: none; color: var(--muted); font-size: 13px; text-decoration: underline; cursor: pointer; padding: 4px; }
+
+.carrito__total {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 14px 16px; border-radius: 14px; background: var(--ice);
+}
+.carrito__total strong { font: 800 1.35rem/1 'Unbounded', sans-serif; color: var(--navy); }
+.carrito__nota { font-size: 13.5px; color: var(--muted); margin: 0; }
+
+.carrito__form { display: grid; gap: 14px; }
+.carrito__form fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 8px; }
+.carrito__form legend { font-weight: 700; color: var(--navy); margin-bottom: 6px; font-size: 15px; }
+.carrito__campo { display: grid; gap: 6px; font-size: 15px; font-weight: 600; color: var(--navy); }
+.carrito__campo em { font-style: normal; font-weight: 500; color: var(--muted); }
+.carrito__campo input, .carrito__campo textarea {
+  font: 500 16px/1.4 'Manrope', sans-serif; color: var(--ink);
+  padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: #fff;
+}
+.carrito__campo input:focus, .carrito__campo textarea:focus { border-color: var(--glow); outline: none; box-shadow: 0 0 0 3px rgba(79,163,255,.25); }
+.carrito__radio {
+  display: flex; gap: 10px; align-items: center; padding: 12px 14px;
+  border: 1.5px solid var(--line); border-radius: 12px; cursor: pointer; font-size: 15px;
+}
+.carrito__radio:has(input:checked) { border-color: var(--navy); background: var(--ice); }
+.carrito__radio:has(input:disabled) { opacity: .45; cursor: not-allowed; }
+.carrito__radio input { accent-color: var(--navy); width: 18px; height: 18px; }
+.carrito__envio { display: grid; gap: 8px; }
+.carrito__error { margin: 0; color: #b42318; font-weight: 600; font-size: 14px; }
+.carrito__volver {
+  border: 0; background: none; color: var(--blue); font-weight: 600; cursor: pointer;
+  padding: 8px; justify-self: center;
+}
+
+.carrito__listo { display: grid; gap: 14px; }
+.carrito__ok { font: 800 1.6rem/1.1 'Unbounded', sans-serif; color: var(--navy); margin: 8px 0 0; }
+.carrito__pago { padding: 16px; border-radius: 14px; background: var(--ice); display: grid; gap: 10px; }
+.carrito__pago p { margin: 0; }
+.carrito__alias { display: flex; gap: 8px; align-items: center; }
+.carrito__alias code {
+  flex: 1; padding: 10px 12px; border-radius: 10px; background: #fff;
+  font: 600 16px 'JetBrains Mono', monospace; color: var(--navy); word-break: break-all;
+}
+.carrito__alias button {
+  padding: 10px 14px; border-radius: 10px; border: 0; background: var(--navy); color: #fff;
+  font-weight: 700; cursor: pointer;
+}
+.carrito__wa { background: #128C4A !important; }
+.carrito__wa:hover { background: #0f7a40 !important; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carrito__caja, .carrito__fondo { transition: none; }
+}

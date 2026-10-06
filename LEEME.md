@@ -110,3 +110,23 @@ Poné una **coma** después del `}` del último producto y pegá el bloque nuevo
 | No se ve la burbuja 3D | El navegador no soporta 3D (muy raro); en ese caso se muestra una versión animada más simple automáticamente. |
 
 **Tip:** si te trabás, mandame la foto, el nombre y el precio del producto nuevo y te paso el bloque listo para pegar.
+
+## Carrito, pedidos y cobro
+
+La página tiene un carrito: el cliente agrega productos (los que tienen precio), completa sus datos, elige retiro en Ciudad Evita o envío, y elige pagar con Mercado Pago o en efectivo al retirar.
+
+**Tus datos se cambian en un solo archivo: `assets/js/config.js`.**
+
+| Dato | Qué hace |
+|---|---|
+| `whatsapp` | Tu número. Lo usan todos los botones de WhatsApp de la página |
+| `emailPedidos` | Mail donde te llega cada pedido. La primera vez llega un mail de FormSubmit: tocá "Activate" |
+| `mercadoPagoAlias` | Tu alias de Mercado Pago. El cliente lo ve con el total para transferirte |
+| `mercadoPagoTitular` | Tu nombre, para que el cliente confirme a quién le paga |
+| `direccion` | Dónde se retiran los pedidos |
+
+Cómo te llega un pedido:
+1. Por mail (si cargaste `emailPedidos`), con el número de pedido, productos, total y datos del cliente.
+2. Por WhatsApp: al terminar, el cliente toca "Enviar pedido por WhatsApp" y te llega el mensaje armado.
+
+Los productos con `precio: null` no se pueden agregar al carrito: muestran solo "Consultar".

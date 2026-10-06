@@ -6,6 +6,17 @@
   'use strict';
   document.documentElement.classList.add('js');
 
+  // Datos de contacto desde assets/js/config.js
+  var CFG = window.LUATEC_CONFIG || {};
+  if (CFG.whatsapp) {
+    document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function (a) {
+      a.href = a.href.replace(/wa\.me\/\d+/, 'wa.me/' + CFG.whatsapp);
+    });
+  }
+  if (CFG.direccion) {
+    document.querySelectorAll('[data-direccion]').forEach(function (el) { el.textContent = CFG.direccion; });
+  }
+
   // Menú del celular
   var boton = document.querySelector('.nav-toggle');
   var menu = document.getElementById('navMobile');

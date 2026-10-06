@@ -7,7 +7,7 @@
 (function () {
   'use strict';
 
-  var WHATSAPP = '5491100000000'; // tu número, sin + ni espacios
+  var WHATSAPP = (window.LUATEC_CONFIG || {}).whatsapp || ''; // se cambia en assets/js/config.js
   var CARPETA_IMAGENES = (document.body.getAttribute('data-raiz') || '') + 'productos/imagenes/';
 
   var grilla = document.getElementById('catalogo');
@@ -44,6 +44,12 @@
 
   pintar('Todos');
 
+  // Botón "Agregar al carrito"
+  grilla.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-agregar]');
+    if (b && window.LUATEC_CARRITO) window.LUATEC_CARRITO.agregar(productos[+b.getAttribute('data-agregar')]);
+  });
+
   function pintar(cat) {
     var lista = cat === 'Todos' ? productos : productos.filter(function (p) { return p.categoria === cat; });
     grilla.innerHTML = lista.map(tarjeta).join('');
@@ -55,6 +61,14 @@
       ? 'A cotizar'
       : (p.desde ? 'Desde ' : '') + '$' + Number(p.precio).toLocaleString('es-AR');
     var msg = encodeURIComponent('Hola LUATEC! Me interesa: ' + p.nombre);
+    var consultar = '<a class="prod3d__cta" href="https://wa.me/' + WHATSAPP + '?text=' + msg + '" target="_blank" rel="noopener noreferrer">Consultar</a>';
+    var conPrecio = precio !== 'A cotizar' && window.LUATEC_CARRITO;
+    var acciones = conPrecio
+      ? '<div class="prod3d__acciones">' +
+          '<button type="button" class="prod3d__cta" data-agregar="' + productos.indexOf(p) + '" aria-label="Agregar ' + esc(p.nombre) + ' al carrito">Agregar</button>' +
+          consultar.replace('prod3d__cta"', 'prod3d__cta prod3d__cta--sec" aria-label="Consultar por ' + esc(p.nombre) + '"') +
+        '</div>'
+      : consultar;
     return '' +
       '<article class="prod3d" style="--i:' + i + '">' +
         '<div class="prod3d__media">' +
@@ -70,7 +84,7 @@
             '<span>' + esc(p.material || '') + '</span>' +
             '<strong class="prod3d__price">' + precio + '</strong>' +
           '</div>' +
-          '<a class="prod3d__cta" href="https://wa.me/' + WHATSAPP + '?text=' + msg + '" target="_blank" rel="noopener noreferrer">Consultar</a>' +
+          acciones +
         '</div>' +
       '</article>';
   }
