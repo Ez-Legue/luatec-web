@@ -285,3 +285,45 @@ p { margin: 0 0 1em; }
 }
 @keyframes lt-eq { 0%,100% { height: 25%; } 50% { height: 100%; } }
 @media (prefers-reduced-motion: reduce) { .music-btn.is-playing .music-btn__bars i { animation: none; height: 70%; } }
+
+/* ---------- Números del hero ("desde", "menos de") ---------- */
+.hero__meta-item strong small, .stat-strip__number small {
+  font-size: .5em; font-weight: 600; letter-spacing: 0; margin-right: 2px; color: var(--blue);
+}
+
+/* ---------- Formulario de presupuesto ---------- */
+.presu {
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start;
+  padding: 48px; border-radius: 28px;
+  background: radial-gradient(120% 140% at 0% 0%, var(--blue), var(--navy) 60%);
+  color: #d6def5;
+}
+.presu > * { min-width: 0; }
+.presu h2 { color: #fff; }
+.presu .eyebrow { color: var(--glow); }
+.presu__form {
+  display: grid; gap: 16px;
+  background: #fff; color: var(--ink);
+  padding: 28px; border-radius: 22px;
+  box-shadow: 0 24px 50px -20px rgba(0,0,0,.45);
+}
+.presu__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.presu__row--3 { grid-template-columns: 1fr 1.2fr 1.3fr; }
+.presu__campo { display: grid; gap: 6px; font-size: 14px; font-weight: 600; color: var(--navy); }
+.presu__campo input, .presu__campo select, .presu__campo textarea {
+  width: 100%; font: 400 16px/1.4 'Manrope', sans-serif; color: var(--ink);
+  padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: #fff;
+}
+.presu__campo textarea { resize: vertical; }
+.presu__campo input:focus, .presu__campo select:focus, .presu__campo textarea:focus {
+  border-color: var(--glow); outline: none; box-shadow: 0 0 0 3px rgba(79,163,255,.25);
+}
+.presu__error { margin: 0; padding: 10px 14px; border-radius: 10px; background: #fdecec; color: #9b1c1c; font-size: 14px; }
+.presu__nota { margin: 0; font-size: 13px; color: var(--muted); text-align: center; }
+@media (max-width: 900px) {
+  .presu { grid-template-columns: 1fr; padding: 28px 20px; gap: 28px; }
+}
+@media (max-width: 560px) {
+  .presu__row, .presu__row--3 { grid-template-columns: 1fr; }
+  .presu__form { padding: 20px; }
+}

@@ -60,7 +60,7 @@
           <li><a class="nav-luatec__link" href="#proceso">Servicios</a></li>
           <li><a class="nav-luatec__link" href="#contacto">Contacto</a></li>
         </ul>
-        <a href="#contacto" class="btn btn--primary btn--sm nav-cta">Pedí tu presupuesto</a>
+        <a href="#presupuesto" class="btn btn--primary btn--sm nav-cta">Pedí tu presupuesto</a>
       </nav>
 
       <div class="site-header__acciones">
@@ -81,7 +81,7 @@
         <li><a class="nav-mobile__link" href="#productos">Productos</a></li>
         <li><a class="nav-mobile__link" href="#proceso">Servicios</a></li>
         <li><a class="nav-mobile__link" href="#contacto">Contacto</a></li>
-        <li><a href="#contacto" class="btn btn--primary btn--block">Pedí tu presupuesto</a></li>
+        <li><a href="#presupuesto" class="btn btn--primary btn--block">Pedí tu presupuesto</a></li>
       </ul>
     </nav>
   </header>
@@ -96,22 +96,22 @@
           <h1 id="heroTitle" class="hero__title">Buscamos <span class="hero__accent">la solución</span> a tus ideas, capa por capa.</h1>
           <p class="hero__lead">En LUATEC diseñamos e imprimimos en 3D lo que tenés en mente: llaveros, objetos para tu hogar, organizadores y piezas técnicas. Nos contás tu idea, consultamos tu diseño y armamos tu presupuesto sin vueltas.</p>
           <div class="hero__actions">
-            <a href="#contacto" class="btn btn--primary">Armá tu presupuesto</a>
+            <a href="#presupuesto" class="btn btn--primary">Armá tu presupuesto</a>
             <a href="#productos" class="btn btn--outline">Ver productos</a>
           </div>
 
           <div class="hero__meta">
             <div class="hero__meta-item">
-              <strong>+850</strong>
-              <span>Piezas entregadas</span>
+              <strong>+50</strong>
+              <span>Piezas en volumen entregadas</span>
             </div>
             <div class="hero__meta-item">
-              <strong>0,1 mm</strong>
+              <strong><small>desde</small> 0,1 mm</strong>
               <span>Precisión de capa</span>
             </div>
             <div class="hero__meta-item">
-              <strong>48 hs</strong>
-              <span>Presupuesto en</span>
+              <strong><small>menos de</small> 24 hs</strong>
+              <span>Para tu presupuesto</span>
             </div>
           </div>
         </div>
@@ -148,8 +148,8 @@
           <div class="col-12 col-lg-6 reveal">
             <div class="stat-strip">
               <div>
-                <div class="stat-strip__number">+850</div>
-                <div class="stat-strip__label">Piezas entregadas</div>
+                <div class="stat-strip__number">+50</div>
+                <div class="stat-strip__label">Piezas en volumen entregadas</div>
               </div>
               <div>
                 <div class="stat-strip__number">120+</div>
@@ -160,7 +160,7 @@
                 <div class="stat-strip__label">Materiales disponibles</div>
               </div>
               <div>
-                <div class="stat-strip__number">48hs</div>
+                <div class="stat-strip__number">&lt;24hs</div>
                 <div class="stat-strip__label">Tiempo de presupuesto</div>
               </div>
             </div>
@@ -253,7 +253,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a12 12 0 0 0 6 6L15 14l5 2v4a2 2 0 0 1-2 2C9.5 22 2 14.5 2 6a2 2 0 0 1 2-2z"/></svg>
               </div>
               <h3 class="feature-card__title">Presupuesto ágil</h3>
-              <p class="feature-card__desc">Respondemos cada consulta en menos de 48 horas hábiles, con precio cerrado.</p>
+              <p class="feature-card__desc">Respondemos cada consulta en menos de 24 horas, con precio cerrado.</p>
             </div>
           </div>
         </div>
@@ -290,19 +290,72 @@
       </div>
     </section>
 
-    <!-- ============ CTA FINAL ============ -->
-    <section class="section">
+    <!-- ============ PRESUPUESTO (formulario) ============ -->
+    <!-- El pedido llega por WhatsApp (y por mail si completaste emailPedidos en assets/js/config.js) -->
+    <section class="section" id="presupuesto" aria-labelledby="presupuestoTitle">
       <div class="container-luatec">
-        <div class="cta-band reveal">
-          <div class="cta-band__inner">
-            <div>
-              <h2>¿Tenés una idea para imprimir?</h2>
-              <p>Contanos qué necesitás y armamos tu presupuesto sin compromiso.</p>
-            </div>
-            <div class="cta-band__actions">
-              <a href="#contacto" class="btn btn--light">Armar mi presupuesto</a>
-            </div>
+        <div class="presu">
+          <div class="presu__intro">
+            <p class="eyebrow">Presupuesto sin compromiso</p>
+            <h2 id="presupuestoTitle">¿Tenés una idea para imprimir?</h2>
+            <p>Contanos qué necesitás y te respondemos en menos de 24 horas con el precio. Si tenés una foto, un dibujo o el archivo 3D, mandalo después por WhatsApp.</p>
+            <ul class="layer-list">
+              <li>Sin archivo 3D también se puede: lo diseñamos</li>
+              <li>Piezas sueltas o en volumen</li>
+              <li>Te asesoramos con el material</li>
+            </ul>
           </div>
+
+          <form class="presu__form" id="presuForm" novalidate>
+            <div class="presu__row">
+              <label class="presu__campo">Tu nombre
+                <input type="text" id="presuNombre" name="nombre" autocomplete="name" required>
+              </label>
+              <label class="presu__campo">Tu WhatsApp o mail
+                <input type="text" id="presuContacto" name="contacto" autocomplete="tel" required>
+              </label>
+            </div>
+            <label class="presu__campo">¿Qué querés imprimir?
+              <select id="presuTipo" name="tipo">
+                <option>Llaveros personalizados</option>
+                <option>Decoración / hogar</option>
+                <option>Organizadores</option>
+                <option>Pieza técnica o repuesto</option>
+                <option>Prototipo</option>
+                <option>Otra cosa</option>
+              </select>
+            </label>
+            <label class="presu__campo">Contanos tu idea
+              <textarea id="presuIdea" name="idea" rows="4" placeholder="Ej: 30 llaveros con el logo de mi local, de 5 cm, en azul y blanco" required></textarea>
+            </label>
+            <div class="presu__row presu__row--3">
+              <label class="presu__campo">Cantidad
+                <input type="number" id="presuCant" name="cantidad" min="1" value="1" inputmode="numeric">
+              </label>
+              <label class="presu__campo">Medidas aprox.
+                <input type="text" id="presuMedidas" name="medidas" placeholder="Ej: 5 x 3 cm">
+              </label>
+              <label class="presu__campo">Material
+                <select id="presuMaterial" name="material">
+                  <option>No sé, asesorame</option>
+                  <option>PLA</option>
+                  <option>PETG</option>
+                  <option>ABS</option>
+                  <option>Resina</option>
+                </select>
+              </label>
+            </div>
+            <label class="presu__campo">¿Tenés el archivo 3D?
+              <select id="presuArchivo" name="archivo">
+                <option>No, necesito que lo diseñen</option>
+                <option>Sí, tengo el archivo (STL u otro)</option>
+                <option>Tengo una foto o dibujo</option>
+              </select>
+            </label>
+            <p class="presu__error" id="presuError" role="alert" hidden></p>
+            <button type="submit" class="btn btn--primary btn--block">Pedir presupuesto por WhatsApp</button>
+            <p class="presu__nota" id="presuNota" role="status">Se abre WhatsApp con tu consulta lista para enviar.</p>
+          </form>
         </div>
       </div>
     </section>
@@ -387,6 +440,7 @@
   <script src="assets/js/config.js" defer></script>
   <script src="musica/canciones.js" defer></script>
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/presupuesto.js" defer></script>
   <!-- NUEVO: Three.js (motor 3D), lista de productos, catálogo y efecto vidrio -->
   <script src="assets/js/vendor/three.min.js" defer></script>
   <script src="productos/productos.js" defer></script>
