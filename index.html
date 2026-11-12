@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LUATEC | Impresión 3D a medida: llaveros, hogar y piezas técnicas</title>
+  <title>LUATEC | Tienda de impresión 3D: llaveros, hogar, organizadores y más</title>
   <meta name="description" content="LUATEC es un estudio de impresión 3D. Buscamos la solución a tus ideas: llaveros personalizados, objetos de decoración, organizadores y piezas técnicas. Consultá tu diseño y armamos tu presupuesto.">
   <meta name="keywords" content="impresión 3D, LUATEC, llaveros personalizados, decoración impresa en 3D, piezas técnicas, prototipado, presupuesto impresión 3D">
   <meta name="author" content="LUATEC">
@@ -38,12 +38,17 @@
   <link rel="stylesheet" href="assets/css/estilos.css">
   <!-- NUEVO: efectos 3D, tipografía y catálogo -->
   <link rel="stylesheet" href="assets/css/luatec-3d.css">
-  <!-- Carrito y pedidos -->
-  <link rel="stylesheet" href="assets/css/carrito.css">
+  <!-- Tienda, ficha de producto y carrito por WhatsApp -->
+  <link rel="stylesheet" href="assets/css/tienda.css">
 </head>
 <body>
 
-  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+  <a class="skip-link" href="#tienda">Saltar a la tienda</a>
+
+  <!-- ============ BARRA DE AVISO ============ -->
+  <div class="aviso-top">
+    <p><strong>Armá tu pedido acá y te llega por WhatsApp</strong><span class="aviso-top__sep" aria-hidden="true">·</span><span>Retiro en <span data-direccion>Ciudad Evita, Buenos Aires</span> o envío</span></p>
+  </div>
 
   <!-- ============ HEADER ============ -->
   <header class="site-header">
@@ -54,16 +59,16 @@
 
       <nav class="nav-luatec" aria-label="Navegación principal">
         <ul class="nav-luatec__list">
-          <li><a class="nav-luatec__link" href="#inicio" aria-current="page">Inicio</a></li>
-          <li><a class="nav-luatec__link" href="#nosotros">Nosotros</a></li>
-          <li><a class="nav-luatec__link" href="#productos">Productos</a></li>
-          <li><a class="nav-luatec__link" href="#proceso">Servicios</a></li>
+          <li><a class="nav-luatec__link" href="#tienda">Tienda</a></li>
+          <li><a class="nav-luatec__link" href="#como-comprar">Cómo comprar</a></li>
+          <li><a class="nav-luatec__link" href="#a-medida">A medida</a></li>
+          <li><a class="nav-luatec__link" href="#preguntas">Preguntas</a></li>
           <li><a class="nav-luatec__link" href="#contacto">Contacto</a></li>
         </ul>
-        <a href="#presupuesto" class="btn btn--primary btn--sm nav-cta">Pedí tu presupuesto</a>
       </nav>
 
       <div class="site-header__acciones">
+        <a href="#tienda" class="btn btn--primary btn--sm nav-cta">Ver productos</a>
         <button type="button" class="carrito-btn" data-abrir-carrito aria-label="Ver carrito" aria-controls="carrito">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17" cy="20.5" r="1.2"/></svg>
           <span class="carrito-btn__cant" data-carrito-cant hidden>0</span>
@@ -76,160 +81,135 @@
 
     <nav class="nav-mobile" id="navMobile" aria-label="Navegación móvil">
       <ul class="nav-mobile__list">
-        <li><a class="nav-mobile__link" href="#inicio" aria-current="page">Inicio</a></li>
-        <li><a class="nav-mobile__link" href="#nosotros">Nosotros</a></li>
-        <li><a class="nav-mobile__link" href="#productos">Productos</a></li>
-        <li><a class="nav-mobile__link" href="#proceso">Servicios</a></li>
+        <li><a class="nav-mobile__link" href="#tienda">Tienda</a></li>
+        <li><a class="nav-mobile__link" href="#como-comprar">Cómo comprar</a></li>
+        <li><a class="nav-mobile__link" href="#a-medida">Pedidos a medida</a></li>
+        <li><a class="nav-mobile__link" href="#preguntas">Preguntas frecuentes</a></li>
         <li><a class="nav-mobile__link" href="#contacto">Contacto</a></li>
-        <li><a href="#presupuesto" class="btn btn--primary btn--block">Pedí tu presupuesto</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="contenido">
 
-    <!-- ============ HERO ============ -->
-    <section class="hero" id="inicio" aria-labelledby="heroTitle">
+    <!-- ============ PORTADA (corta: la tienda es la protagonista) ============ -->
+    <section class="hero hero--tienda" id="inicio" aria-labelledby="heroTitle">
       <div class="hero__inner">
         <div class="hero__content">
-          <p class="eyebrow">Estudio de impresión 3D</p>
-          <h1 id="heroTitle" class="hero__title">Buscamos <span class="hero__accent">la solución</span> a tus ideas, capa por capa.</h1>
-          <p class="hero__lead">En LUATEC diseñamos e imprimimos en 3D lo que tenés en mente: llaveros, objetos para tu hogar, organizadores y piezas técnicas. Nos contás tu idea, consultamos tu diseño y armamos tu presupuesto sin vueltas.</p>
+          <p class="eyebrow">Tienda de impresión 3D · Hecho en Argentina</p>
+          <h1 id="heroTitle" class="hero__title">Objetos impresos en 3D, <span class="hero__accent">listos para vos</span>.</h1>
+          <p class="hero__lead">Elegí tus productos, el color que más te guste y armá el carrito. Te llega el pedido escrito por WhatsApp y coordinamos pago y entrega. Sin registrarte y sin pagar en la web.</p>
           <div class="hero__actions">
-            <a href="#presupuesto" class="btn btn--primary">Armá tu presupuesto</a>
-            <a href="#productos" class="btn btn--outline">Ver productos</a>
+            <a href="#tienda" class="btn btn--primary btn--lg">Ver la tienda</a>
+            <a href="#a-medida" class="btn btn--outline btn--lg">Pedir algo a medida</a>
           </div>
-
-          <div class="hero__meta">
-            <div class="hero__meta-item">
-              <strong>+50</strong>
-              <span>Piezas en volumen entregadas</span>
-            </div>
-            <div class="hero__meta-item">
-              <strong><small>desde</small> 0,1 mm</strong>
-              <span>Precisión de capa</span>
-            </div>
-            <div class="hero__meta-item">
-              <strong><small>menos de</small> 24 hs</strong>
-              <span>Para tu presupuesto</span>
-            </div>
-          </div>
+          <ul class="hero__beneficios">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Pedido directo por WhatsApp</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18"/></svg>Elegís el color</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>Retiro o envío</li>
+          </ul>
         </div>
 
         <div class="hero__visual">
-          <!-- NUEVO: burbuja de vidrio 3D (assets/js/luatec-3d.js) -->
+          <!-- Burbuja de vidrio 3D (assets/js/luatec-3d.js) -->
           <div class="glass3d" id="glass3d" aria-hidden="true">
             <div class="glass3d__css"><span>LUATEC</span><i></i></div>
             <span class="glass3d__tag glass3d__tag--top">PLA · 0.2MM</span>
             <span class="glass3d__tag">IMPRESIÓN 3D · CAPA POR CAPA</span>
           </div>
+          <!-- Producto nuevo/destacado: se completa solo desde productos.js -->
+          <button type="button" class="hero-dest" id="heroDestacado" hidden></button>
         </div>
       </div>
     </section>
 
-    <!-- ============ QUIÉNES SOMOS (breve) ============ -->
-    <section class="section" id="nosotros" aria-labelledby="quienesTitle">
+    <!-- ============ TIENDA ============ -->
+    <section class="tienda" id="tienda" aria-labelledby="tiendaTitle">
       <div class="container-luatec">
-        <div class="row align-items-center gy-5">
-          <div class="col-12 col-lg-6 reveal">
-            <p class="eyebrow">Quiénes somos</p>
-            <h2 id="quienesTitle">Un taller de impresión 3D pensado para tu idea, no al revés</h2>
-            <p>LUATEC nació para achicar la distancia entre "tengo una idea" y "la tengo en la mano". Trabajamos con impresoras FDM y de resina, materiales certificados y un proceso simple: consulta, diseño, impresión y entrega.</p>
-            <ul class="layer-list mb-4">
-              <li>Asesoramiento técnico en cada consulta</li>
-              <li>Presupuestos claros, sin sorpresas</li>
-              <li>Materiales aptos para uso diario y exterior</li>
-            </ul>
-            <a href="#nosotros" class="link-arrow">
-              Conocé más sobre LUATEC
-              <svg class="link-arrow__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
+        <div class="tienda__head">
+          <div>
+            <p class="eyebrow">Tienda</p>
+            <h2 id="tiendaTitle">Elegí, sumá al carrito y pedí por WhatsApp</h2>
           </div>
-          <div class="col-12 col-lg-6 reveal">
-            <div class="stat-strip">
-              <div>
-                <div class="stat-strip__number">+50</div>
-                <div class="stat-strip__label">Piezas en volumen entregadas</div>
-              </div>
-              <div>
-                <div class="stat-strip__number">120+</div>
-                <div class="stat-strip__label">Clientes recurrentes</div>
-              </div>
-              <div>
-                <div class="stat-strip__number">4</div>
-                <div class="stat-strip__label">Materiales disponibles</div>
-              </div>
-              <div>
-                <div class="stat-strip__number">&lt;24hs</div>
-                <div class="stat-strip__label">Tiempo de presupuesto</div>
-              </div>
-            </div>
-          </div>
+          <p class="tienda__cuenta" id="catalogoCuenta" aria-live="polite"></p>
+        </div>
+
+        <div class="tienda__barra">
+          <label class="tienda__buscar">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <span class="sr-only">Buscar productos</span>
+            <input type="search" id="catalogoBuscar" placeholder="Buscar: llavero, lámpara, azul…" autocomplete="off">
+          </label>
+          <label class="tienda__orden">
+            <span class="sr-only">Ordenar</span>
+            <select id="catalogoOrden">
+              <option value="destacados">Destacados</option>
+              <option value="nuevos">Novedades</option>
+              <option value="menor">Menor precio</option>
+              <option value="mayor">Mayor precio</option>
+            </select>
+          </label>
+        </div>
+        <div class="tienda__filtros" id="catalogoFiltros" role="group" aria-label="Filtrar por categoría"></div>
+
+        <!-- Los productos se cargan solos desde productos/productos.js -->
+        <div class="tienda__grid" id="catalogo"></div>
+
+        <div class="tienda__extra">
+          <p><strong>¿No encontrás lo que buscás?</strong> Lo diseñamos e imprimimos a tu medida.</p>
+          <a href="#a-medida" class="btn btn--outline btn--sm">Pedir presupuesto</a>
         </div>
       </div>
     </section>
 
-    <!-- ============ CÓMO TRABAJAMOS (proceso, secuencia real) ============ -->
-    <section class="section section--navy" id="proceso" aria-labelledby="procesoTitle">
+    <!-- ============ CÓMO COMPRAR ============ -->
+    <section class="section section--navy" id="como-comprar" aria-labelledby="comoTitle">
       <div class="container-luatec">
         <div class="section__head section__head--center">
-          <p class="eyebrow">Cómo trabajamos</p>
-          <h2 id="procesoTitle">De tu idea a la pieza terminada, en 4 pasos</h2>
+          <p class="eyebrow">Cómo comprar</p>
+          <h2 id="comoTitle">Comprar es simple: en 3 pasos</h2>
         </div>
-
-        <div class="process-grid">
-          <article class="step-card reveal">
-            <span class="step-card__number">Paso 01</span>
-            <h3 class="step-card__title">Consultá tu idea</h3>
-            <p class="step-card__desc">Nos contás qué necesitás: un objeto puntual, una referencia o simplemente una idea suelta. Te asesoramos sobre qué es posible imprimir.</p>
-          </article>
-          <article class="step-card reveal">
-            <span class="step-card__number">Paso 02</span>
-            <h3 class="step-card__title">Diseñamos el modelo</h3>
-            <p class="step-card__desc">Preparamos o ajustamos el modelo 3D, definimos escala, material y terminación, y te compartimos el presupuesto final.</p>
-          </article>
-          <article class="step-card reveal">
-            <span class="step-card__number">Paso 03</span>
-            <h3 class="step-card__title">Imprimimos capa por capa</h3>
-            <p class="step-card__desc">Con la aprobación del presupuesto, ponemos la pieza en producción y seguimos cada impresión de cerca.</p>
-          </article>
-          <article class="step-card reveal">
-            <span class="step-card__number">Paso 04</span>
-            <h3 class="step-card__title">Entregamos tu pieza</h3>
-            <p class="step-card__desc">Retiro en el taller o envío a domicilio. Cada pieza sale revisada y lista para usar.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PRODUCTOS DESTACADOS ============ -->
-    <section class="section section--ice" id="productos" aria-labelledby="productosTitle">
-      <div class="container-luatec">
-        <div class="section__head">
-          <p class="eyebrow">Catálogo</p>
-          <h2 id="productosTitle">Algunas de las cosas que imprimimos</h2>
-          <p>Nuestro catálogo actualizado. Sumá lo que quieras al carrito y hacé tu pedido, o consultanos para personalizarlo a tu medida.</p>
-        </div>
-
-        <!-- NUEVO: catálogo automático. Los productos se cargan desde productos/productos.js -->
-        <div class="catalogo__filtros" id="catalogoFiltros" role="group" aria-label="Filtrar por categoría"></div>
-        <div class="catalogo__grid" id="catalogo"></div>
-
+        <ol class="pasos">
+          <li class="paso reveal">
+            <span class="paso__num">1</span>
+            <h3>Armá tu carrito</h3>
+            <p>Elegí los productos, el color y la cantidad. Si es personalizable, escribí el nombre o texto.</p>
+          </li>
+          <li class="paso reveal">
+            <span class="paso__num">2</span>
+            <h3>Enviá el pedido por WhatsApp</h3>
+            <p>Al confirmar se abre WhatsApp con todo tu pedido escrito. Solo tocás enviar.</p>
+          </li>
+          <li class="paso reveal">
+            <span class="paso__num">3</span>
+            <h3>Coordinamos pago y entrega</h3>
+            <p>Te respondemos para confirmar, y pagás por transferencia, Mercado Pago o en efectivo al retirar.</p>
+          </li>
+        </ol>
         <div class="text-center mt-5">
-          <a href="https://wa.me/5491100000000" class="btn btn--outline" target="_blank" rel="noopener noreferrer">¿No está lo que buscás? Escribinos</a>
+          <a href="#tienda" class="btn btn--light">Empezar a elegir</a>
         </div>
       </div>
     </section>
 
-    <!-- ============ POR QUÉ ELEGIRNOS ============ -->
-    <section class="section" aria-labelledby="porqueTitle">
+    <!-- ============ POR QUÉ LUATEC ============ -->
+    <section class="section" id="nosotros" aria-labelledby="porqueTitle">
       <div class="container-luatec">
-        <div class="section__head section__head--center">
-          <p class="eyebrow">Por qué LUATEC</p>
-          <h2 id="porqueTitle">Precisión técnica con trato cercano</h2>
+        <div class="porque">
+          <div class="porque__intro reveal">
+            <p class="eyebrow">Por qué LUATEC</p>
+            <h2 id="porqueTitle">Un taller de impresión 3D con trato cercano</h2>
+            <p>Imprimimos cada pieza en nuestro taller de Ciudad Evita y la revisamos antes de entregarla. Si algo no está en la tienda, lo diseñamos para vos.</p>
+          </div>
+          <div class="porque__datos reveal">
+            <div><strong>+50</strong><span>Piezas en volumen entregadas</span></div>
+            <div><strong><small>desde</small> 0,1 mm</strong><span>Precisión de capa</span></div>
+            <div><strong><small>menos de</small> 24 hs</strong><span>Para responder tu pedido</span></div>
+          </div>
         </div>
-        <div class="row g-4">
-          <div class="col-12 col-md-4 reveal">
+
+        <div class="row g-4 porque__cards">
+          <div class="reveal">
             <div class="feature-card">
               <div class="feature-card__icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
@@ -238,22 +218,22 @@
               <p class="feature-card__desc">Revisamos cada pieza antes de entregarla: medidas, terminación y resistencia.</p>
             </div>
           </div>
-          <div class="col-12 col-md-4 reveal">
+          <div class="reveal">
             <div class="feature-card">
               <div class="feature-card__icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
               </div>
-              <h3 class="feature-card__title">Diseño a medida</h3>
-              <p class="feature-card__desc">Adaptamos o creamos el modelo 3D según lo que necesites, sin catálogos cerrados.</p>
+              <h3 class="feature-card__title">Personalizado</h3>
+              <p class="feature-card__desc">Elegís colores, nombres y medidas. Y si no existe, lo creamos desde cero.</p>
             </div>
           </div>
-          <div class="col-12 col-md-4 reveal">
+          <div class="reveal">
             <div class="feature-card">
               <div class="feature-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a12 12 0 0 0 6 6L15 14l5 2v4a2 2 0 0 1-2 2C9.5 22 2 14.5 2 6a2 2 0 0 1 2-2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               </div>
-              <h3 class="feature-card__title">Presupuesto ágil</h3>
-              <p class="feature-card__desc">Respondemos cada consulta en menos de 24 horas, con precio cerrado.</p>
+              <h3 class="feature-card__title">Atención por WhatsApp</h3>
+              <p class="feature-card__desc">Hablás directo con nosotros: sin formularios eternos ni bots.</p>
             </div>
           </div>
         </div>
@@ -265,22 +245,22 @@
       <div class="container-luatec">
         <div class="section__head section__head--center">
           <p class="eyebrow">Testimonios</p>
-          <h2 id="testimoniosTitle">Lo que nos cuentan quienes ya imprimieron con nosotros</h2>
+          <h2 id="testimoniosTitle">Lo que nos cuentan quienes ya compraron</h2>
         </div>
         <div class="row g-4">
-          <div class="col-12 col-md-4 reveal">
+          <div class="reveal">
             <blockquote class="quote-card">
               <p class="quote-card__text">Pedí 50 llaveros con el logo de mi emprendimiento y llegaron impecables, todos iguales.</p>
               <cite class="quote-card__author">Mariana G. — Emprendedora</cite>
             </blockquote>
           </div>
-          <div class="col-12 col-md-4 reveal">
+          <div class="reveal">
             <blockquote class="quote-card">
               <p class="quote-card__text">Necesitaba una pieza de repuesto que ya no se fabricaba. La resolvieron en tres días.</p>
               <cite class="quote-card__author">Julián R. — Particular</cite>
             </blockquote>
           </div>
-          <div class="col-12 col-md-4 reveal">
+          <div class="reveal">
             <blockquote class="quote-card">
               <p class="quote-card__text">El asesoramiento fue clave: me ayudaron a elegir el material justo para exterior.</p>
               <cite class="quote-card__author">Estudio Verde — Paisajismo</cite>
@@ -290,14 +270,15 @@
       </div>
     </section>
 
-    <!-- ============ PRESUPUESTO (formulario) ============ -->
-    <!-- El pedido llega por WhatsApp (y por mail si completaste emailPedidos en assets/js/config.js) -->
-    <section class="section" id="presupuesto" aria-labelledby="presupuestoTitle">
+    <!-- ============ A MEDIDA (formulario de presupuesto) ============ -->
+    <!-- La consulta llega por WhatsApp (y por mail si completaste emailPedidos en assets/js/config.js) -->
+    <section class="section" id="a-medida" aria-labelledby="presupuestoTitle">
+      <span id="presupuesto" aria-hidden="true"></span>
       <div class="container-luatec">
         <div class="presu">
           <div class="presu__intro">
-            <p class="eyebrow">Presupuesto sin compromiso</p>
-            <h2 id="presupuestoTitle">¿Tenés una idea para imprimir?</h2>
+            <p class="eyebrow">Pedidos a medida</p>
+            <h2 id="presupuestoTitle">¿Tenés una idea que no está en la tienda?</h2>
             <p>Contanos qué necesitás y te respondemos en menos de 24 horas con el precio. Si tenés una foto, un dibujo o el archivo 3D, mandalo después por WhatsApp.</p>
             <ul class="layer-list">
               <li>Sin archivo 3D también se puede: lo diseñamos</li>
@@ -360,7 +341,42 @@
       </div>
     </section>
 
+    <!-- ============ PREGUNTAS FRECUENTES ============ -->
+    <section class="section section--ice" id="preguntas" aria-labelledby="faqTitle">
+      <div class="container-luatec faq">
+        <div class="section__head section__head--center">
+          <p class="eyebrow">Preguntas frecuentes</p>
+          <h2 id="faqTitle">Todo lo que tenés que saber</h2>
+        </div>
+        <details class="faq__item">
+          <summary>¿Tengo que pagar en la página?</summary>
+          <p>No. La web solo arma tu pedido. Al confirmarlo se abre WhatsApp con todo escrito, y ahí coordinamos el pago: transferencia, Mercado Pago o efectivo si retirás.</p>
+        </details>
+        <details class="faq__item">
+          <summary>¿Cómo elijo el color?</summary>
+          <p>En la ficha de cada producto ves los colores disponibles. Tocás el que quieras antes de agregarlo al carrito. Si buscás otro color, consultanos.</p>
+        </details>
+        <details class="faq__item">
+          <summary>¿Hacen envíos?</summary>
+          <p>Sí. Podés retirar en <span data-direccion>Ciudad Evita, Buenos Aires</span> o pedir envío a domicilio. El costo depende de tu zona y te lo pasamos por WhatsApp.</p>
+        </details>
+        <details class="faq__item">
+          <summary>¿Cuánto tarda mi pedido?</summary>
+          <p>Depende del producto y la cantidad, porque imprimimos cada pieza. Cuando nos mandás el pedido te confirmamos la fecha de entrega.</p>
+        </details>
+        <details class="faq__item">
+          <summary>¿Puedo personalizar un producto?</summary>
+          <p>Sí. Los productos marcados como "Personalizable" te dejan escribir un nombre o texto. Para cambios más grandes, usá el formulario de pedidos a medida.</p>
+        </details>
+      </div>
+    </section>
+
   </main>
+
+  <!-- ============ WHATSAPP FLOTANTE ============ -->
+  <a class="wa-flotante" href="https://wa.me/5491100000000?text=Hola%20LUATEC!%20Tengo%20una%20consulta" target="_blank" rel="noopener noreferrer" aria-label="Escribinos por WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+  </a>
 
   <!-- ============ MÚSICA (reproductor flotante) ============ -->
   <!-- Las canciones se eligen en musica/canciones.js -->
@@ -379,14 +395,13 @@
     </button>
   </div>
 
-  <!-- ============ FOOTER ============ -->
-  <p class="sr-only" id="carritoAviso" aria-live="polite"></p>
 
+  <!-- ============ FOOTER ============ -->
   <footer class="site-footer" id="contacto">
     <div class="site-footer__inner">
       <div class="site-footer__brand">
         <img src="assets/img/logo-blanco.png" alt="LUATEC" class="site-footer__logo-mark" width="429" height="483" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="brand__word brand__word--light" hidden>LUATEC</span>
-        <p>Estudio de impresión 3D. Buscamos la solución a tus ideas, capa por capa.</p>
+        <p>Tienda y estudio de impresión 3D. Buscamos la solución a tus ideas, capa por capa.</p>
         <div class="site-footer__social">
           <a href="https://instagram.com" class="site-footer__social-link" aria-label="LUATEC en Instagram" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
@@ -403,29 +418,25 @@
       <nav aria-label="Mapa del sitio">
         <p class="site-footer__title">Navegación</p>
         <ul class="site-footer__list">
-          <li><a class="site-footer__link" href="#inicio">Inicio</a></li>
-          <li><a class="site-footer__link" href="#nosotros">Nosotros</a></li>
-          <li><a class="site-footer__link" href="#productos">Productos</a></li>
-          <li><a class="site-footer__link" href="#proceso">Servicios</a></li>
-          <li><a class="site-footer__link" href="#contacto">Contacto</a></li>
+          <li><a class="site-footer__link" href="#tienda">Tienda</a></li>
+          <li><a class="site-footer__link" href="#como-comprar">Cómo comprar</a></li>
+          <li><a class="site-footer__link" href="#a-medida">Pedidos a medida</a></li>
+          <li><a class="site-footer__link" href="#preguntas">Preguntas frecuentes</a></li>
         </ul>
       </nav>
 
       <div>
-        <p class="site-footer__title">Productos</p>
-        <ul class="site-footer__list">
-          <li><a class="site-footer__link" href="#productos">Llaveros</a></li>
-          <li><a class="site-footer__link" href="#productos">Hogar y decoración</a></li>
-          <li><a class="site-footer__link" href="#productos">Organización</a></li>
-          <li><a class="site-footer__link" href="#productos">Piezas técnicas</a></li>
+        <p class="site-footer__title">Categorías</p>
+        <ul class="site-footer__list" id="footerCategorias">
+          <li><a class="site-footer__link" href="#tienda">Ver todo</a></li>
         </ul>
       </div>
 
       <div>
         <p class="site-footer__title">Contacto</p>
         <ul class="site-footer__list">
+          <li><a class="site-footer__link" href="https://wa.me/5491100000000" target="_blank" rel="noopener noreferrer" data-wa-visible>WhatsApp</a></li>
           <li><a class="site-footer__link" href="mailto:hola@luatec.com.ar">hola@luatec.com.ar</a></li>
-          <li><a class="site-footer__link" href="tel:+5491100000000">+54 9 11 0000-0000</a></li>
           <li><span data-direccion>Ciudad Evita, Buenos Aires</span></li>
         </ul>
       </div>
@@ -433,19 +444,21 @@
 
     <div class="site-footer__bottom">
       <span>&copy; <span id="currentYear">2026</span> LUATEC. Todos los derechos reservados.</span>
-      <span>Diseño y desarrollo propio · Impresión 3D</span>
+      <span>Los pedidos se confirman y se pagan por WhatsApp.</span>
     </div>
   </footer>
-  <!-- Tus datos de contacto y cobro: assets/js/config.js -->
+  <p class="sr-only" id="carritoAviso" aria-live="polite"></p>
+
+  <!-- Tus datos (WhatsApp, dirección): assets/js/config.js -->
   <script src="assets/js/config.js" defer></script>
   <script src="musica/canciones.js" defer></script>
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/presupuesto.js" defer></script>
-  <!-- NUEVO: Three.js (motor 3D), lista de productos, catálogo y efecto vidrio -->
-  <script src="assets/js/vendor/three.min.js" defer></script>
+  <!-- Tienda: lista de productos y carrito por WhatsApp -->
   <script src="productos/productos.js" defer></script>
-  <script src="assets/js/carrito.js" defer></script>
-  <script src="assets/js/catalogo.js" defer></script>
+  <script src="assets/js/tienda.js" defer></script>
+  <!-- Three.js (motor 3D) y efecto vidrio -->
+  <script src="assets/js/vendor/three.min.js" defer></script>
   <script src="assets/js/luatec-3d.js" defer></script>
 </body>
 </html>

@@ -13,6 +13,9 @@
       a.href = a.href.replace(/wa\.me\/\d+/, 'wa.me/' + CFG.whatsapp);
     });
   }
+  if (CFG.whatsappVisible) {
+    document.querySelectorAll('[data-wa-visible]').forEach(function (el) { el.textContent = 'WhatsApp ' + CFG.whatsappVisible; });
+  }
   if (CFG.direccion) {
     document.querySelectorAll('[data-direccion]').forEach(function (el) { el.textContent = CFG.direccion; });
   }

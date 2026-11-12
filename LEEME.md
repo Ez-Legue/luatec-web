@@ -10,7 +10,7 @@
 
 ```
 luatec-web-3d/
-├── index.html                  ← La página (inicio, nosotros, proceso, catálogo, contacto)
+├── index.html                  ← La página (portada, tienda, cómo comprar, a medida, preguntas)
 ├── LEEME.md                    ← Este instructivo
 ├── assets/
 │   ├── img/
@@ -18,11 +18,14 @@ luatec-web-3d/
 │   │   └── logo-blanco.png     ← Tu logo en blanco (pie de página)
 │   ├── css/
 │   │   ├── estilos.css         ← Colores, botones, secciones y pie
-│   │   └── luatec-3d.css       ← Tipografía, efectos 3D y tarjetas de productos
+│   │   ├── luatec-3d.css       ← Tipografía y burbuja 3D
+│   │   └── tienda.css          ← Tienda, ficha de producto y carrito
 │   └── js/
 │       ├── main.js             ← Menú del celular y animaciones al bajar
 │       ├── luatec-3d.js        ← La burbuja de vidrio 3D del inicio
-│       ├── catalogo.js         ← Arma el catálogo solo
+│       ├── config.js           ← ★ Tu WhatsApp y tu dirección
+│       ├── tienda.js           ← Arma la tienda y el carrito solos (no hace falta tocarlo)
+│       ├── presupuesto.js      ← Formulario "A medida"
 │       └── vendor/three.min.js ← Motor 3D (no tocar)
 ├── musica/
 │   ├── canciones.js            ← La lista de temas del reproductor
@@ -62,17 +65,21 @@ Poné una **coma** después del `}` del último producto y pegá el bloque nuevo
     nombre: "Porta celular articulado",
     categoria: "Accesorios",
     descripcion: "Soporte regulable para escritorio, entra cualquier celular.",
-    material: "PETG · negro mate",
+    material: "PETG",
+    medidas: "12 x 8 cm",
     precio: 6500,
     desde: false,
-    imagen: "porta-celular.jpg",
+    fotos: ["porta-celular.jpg", "porta-celular-2.jpg"],
+    colores: ["Negro", "Blanco", "Rojo"],
+    personalizable: false,
     nuevo: true,
+    destacado: false,
     visible: true
   }
 ];
 ```
 
-**Paso 5: guardá** (Ctrl + S) y recargá la página en el navegador (F5). El producto aparece solo, con su foto, precio y botón de consulta por WhatsApp.
+**Paso 5: guardá** (Ctrl + S) y recargá la página en el navegador (F5). El producto aparece solo, con su foto, precio colores y botón para agregar al carrito.
 
 ### Qué significa cada dato
 
@@ -85,7 +92,11 @@ Poné una **coma** después del `}` del último producto y pegá el bloque nuevo
 | `precio` | Solo el número, **sin $ ni puntos** | `12500` |
 | | Si es a cotizar | `null` |
 | `desde` | `true` muestra "Desde $…", `false` muestra el precio exacto | `true` |
-| `imagen` | Nombre exacto del archivo en `productos/imagenes/` | `"llavero.jpg"` |
+| `medidas` | Opcional | `"5 x 3 cm"` |
+| `fotos` | Archivos en `productos/imagenes/`, la primera es la principal | `["llavero.jpg", "llavero-2.jpg"]` |
+| `colores` | Colores disponibles (nombres de la lista `LUATEC_COLORES`, al final del archivo). `[]` si no se elige color | `["Negro", "Azul"]` |
+| `personalizable` | `true` deja que el cliente escriba un nombre o texto | `true` |
+| `destacado` | `true` lo muestra primero con la etiqueta "Más pedido" | `true` |
 | `nuevo` | `true` le pone la etiqueta brillante **NUEVO** | `true` |
 | `visible` | `false` lo oculta sin borrarlo (por ejemplo, sin stock) | `false` |
 
@@ -94,8 +105,10 @@ Poné una **coma** después del `}` del último producto y pegá el bloque nuevo
 - **Cambiar un precio:** buscá el producto en `productos.js`, cambiá el número de `precio`, guardá y recargá.
 - **Ocultar un producto:** cambiá `visible: true` por `visible: false`.
 - **Borrar un producto:** borrá su bloque `{ ... }` entero y fijate que no quede una coma de más antes del `];`.
-- **Cambiar el número de WhatsApp de los botones:** en `assets/js/catalogo.js`, línea `var WHATSAPP = '5491100000000';` (sin +, sin espacios).
-- **Música:** el reproductor de abajo a la derecha tiene un botón para reproducir o pausar, uno (☰) para elegir el tema de una lista y otro (⏭) para pasar al siguiente. Nunca arranca solo. Los cinco temas que vienen (lo-fi, jazz, pop, techno y ambiente) son originales, hechos para LUATEC, así que no tienen derechos de autor de terceros.
+- **Cambiar el número de WhatsApp:** en `assets/js/config.js`, campo `whatsapp` (con 549, sin +, sin espacios). Cambia el carrito y todos los botones.
+- **Un color nuevo:** sumalo a `LUATEC_COLORES` al final de `productos.js` con su código, por ejemplo `"Turquesa": "#30c5c0",`.
+- **Compartir un producto:** en la ficha está el botón "Copiar link de este producto". Ese link abre la web directo en ese producto (sirve para Instagram o el catálogo de WhatsApp).
+- **Música:** el reproductor de abajo a la izquierda tiene un botón para reproducir o pausar, uno (☰) para elegir el tema de una lista y otro (⏭) para pasar al siguiente. Nunca arranca solo. Los cinco temas que vienen (lo-fi, jazz, pop, techno y ambiente) son originales, hechos para LUATEC, así que no tienen derechos de autor de terceros.
 - **Agregar una canción:** copiá el MP3 en la carpeta `musica/` (nombre sin espacios ni tildes) y sumá una línea en `musica/canciones.js`, por ejemplo: `{ titulo: "Mi tema", estilo: "Rock", archivo: "mi-tema.mp3" },`
 - **Cambiar el logo:** reemplazá `assets/img/logo.png` (y `logo-blanco.png` para el pie) por los nuevos, con el mismo nombre.
 - **Cambiar la palabra detrás de la burbuja 3D:** en `assets/js/luatec-3d.js`, línea `var TEXTO_FONDO = 'LUATEC';`.
@@ -105,28 +118,32 @@ Poné una **coma** después del `}` del último producto y pegá el bloque nuevo
 | Problema | Solución |
 |---|---|
 | No aparece ningún producto | Casi siempre es una coma o comilla faltante en `productos.js`. Revisá el último producto que agregaste. |
-| Aparece el producto pero sin foto | El nombre en `imagen` tiene que ser **idéntico** al del archivo, incluida la extensión (`.jpg`, `.png`, `.webp`). |
+| Aparece el producto pero sin foto | El nombre en `fotos` tiene que ser **idéntico** al del archivo, incluida la extensión (`.jpg`, `.png`, `.webp`). |
 | El precio sale raro | En `precio` va solo el número: `9800`, no `"$9.800"`. |
 | No se ve la burbuja 3D | El navegador no soporta 3D (muy raro); en ese caso se muestra una versión animada más simple automáticamente. |
 
 **Tip:** si te trabás, mandame la foto, el nombre y el precio del producto nuevo y te paso el bloque listo para pegar.
 
-## Carrito, pedidos y cobro
 
-La página tiene un carrito: el cliente agrega productos (los que tienen precio), completa sus datos, elige retiro en Ciudad Evita o envío, y elige pagar con Mercado Pago o en efectivo al retirar.
+## Cómo funciona el carrito (pedido por WhatsApp)
 
-**Tus datos se cambian en un solo archivo: `assets/js/config.js`.**
+La web **no cobra**. El cliente:
+1. Elige productos, color, cantidad y (si es personalizable) el texto.
+2. Pone su nombre y si retira en Ciudad Evita o quiere envío (con su localidad).
+3. Toca **Enviar pedido por WhatsApp**: se abre WhatsApp con el pedido escrito y dirigido a tu número. Solo tiene que tocar enviar.
 
-| Dato | Qué hace |
-|---|---|
-| `whatsapp` | Tu número. Lo usan todos los botones de WhatsApp de la página |
-| `emailPedidos` | Mail donde te llega cada pedido. La primera vez llega un mail de FormSubmit: tocá "Activate" |
-| `mercadoPagoAlias` | Tu alias de Mercado Pago. El cliente lo ve con el total para transferirte |
-| `mercadoPagoTitular` | Tu nombre, para que el cliente confirme a quién le paga |
-| `direccion` | Dónde se retiran los pedidos |
+Te llega algo así:
 
-Cómo te llega un pedido:
-1. Por mail (si cargaste `emailPedidos`), con el número de pedido, productos, total y datos del cliente.
-2. Por WhatsApp: al terminar, el cliente toca "Enviar pedido por WhatsApp" y te llega el mensaje armado.
+```
+¡Hola LUATEC! Quiero hacer este pedido (LT-4SN1K):
 
-Los productos con `precio: null` no se pueden agregar al carrito: muestran solo "Consultar".
+• 2 x Llaveros personalizados (color Azul, texto "Sofi") — desde $7.000
+• 1 x Lámpara luna (color Blanco) — $18.500
+
+Total estimado: $18.500
+Entrega: envío a Morón
+
+Soy Juan Pérez. ¡Gracias!
+```
+
+Después vos le confirmás stock, colores, envío y forma de pago. Los productos con `precio: null` se pueden sumar al pedido como "a cotizar" y no suman al total.
